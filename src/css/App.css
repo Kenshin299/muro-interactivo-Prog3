@@ -1,0 +1,182 @@
+* {
+  margin: 0;
+}
+
+.App {
+  text-align: center;
+}
+
+a {
+  color: #61dafb;
+}
+
+a:hover {
+  color:#45af64;
+}
+
+input[type="submit"] {
+  font-family: 'Roboto Mono';
+  font-style: bold;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+input[type="submit"]:hover {
+  background-color: #000000;
+  color: #ffffff;
+  transform: scale(1.02);
+}
+
+
+.NavBar {
+  background-color: #282c34;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  font-size: calc(10px + 2vmin);
+  padding: 0.5em;
+}
+
+.NavButtons {
+  display: flex;
+  gap: 20px;
+}
+
+.Button:hover {
+  background-color: #9ffcf7;
+  color: #000000;
+  transform: scale(1.02);
+}
+
+.Button {
+  background-color: #45af64;
+  border-radius: 5px;
+  border: none;
+  font-size: 20px;
+  padding: 8px;
+}
+
+.Post-Container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: calc(10px + 2vmin);
+  margin: 20px;
+  padding: 20px;
+  padding-right: 30px;
+}
+
+.NewPost {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #1d4f8c;
+  padding: 20px;
+  border-radius: 10px;
+  min-width: 50vw;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-height: min-content;
+  margin-top: 10px;
+}
+
+textarea {
+  height:  6em;
+  width: 50vw;
+  border: none;
+  border-radius: 4px;
+}
+
+input {
+  height: 2.5em;
+  width: 50vw;
+  border: none;
+  border-radius: 4px;
+  align-self: center;
+  margin-bottom: 10px;
+}
+
+.NewPost-Buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  justify-content: flex-end;
+}
+
+input[type="submit"] {
+  height: 2.5em;
+  width: 10vw;
+  min-width: max-content;
+  border: none;
+  border-radius: 8px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.hSeparator {
+  margin: 20px 0 0 0;
+}
+
+.PostList {
+  display: flex;
+  flex-flow: column wrap;
+  background-color: #1d4f8c;
+  min-width: 50vw;
+  padding: 20px;
+  margin: 30px;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+
+.PostList > div {
+  background-color: #1A1A1B;
+  margin-top: 10px;
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid #343536;
+}
+
+.userInfo {
+  font-family: 'Menlo Regular';
+  font-size: 11px;
+  color: #f3f3f3;
+}
+
+.Post-Text {
+  padding: 3px 0 0 5px;
+}
+
+.SignUp-Container {
+  background-color: #1A1A1B;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  gap: 20px;
+  max-width: fit-content;
+  min-height: 30vh;
+  margin: 5% auto 15% auto;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.SignUp-Container > h1, p {
+  align-self: center;
+} 
+
+label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
