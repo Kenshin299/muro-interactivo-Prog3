@@ -1,5 +1,7 @@
 # Muro Interactivo con React y Firebase
 
+Rama de QA para testing
+
 # Inicio de la pagina sin iniciar Sesion
 
 ![Primera Captura de Pantalla](/src/img/Muro7.png)
