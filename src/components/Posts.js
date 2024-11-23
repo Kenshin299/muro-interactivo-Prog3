@@ -19,6 +19,11 @@ function Posts(props) {
         setPostTitle(e.target.value);
     };
 
+    const handleReset = (e) => {
+        setPostTitle("");
+        setPostBody("");
+    }
+
     const addPost = async (e) => {
         e.preventDefault();
         const sendPost = await addDoc(collection(db, 'posts'), {
@@ -55,6 +60,9 @@ function Posts(props) {
                             </textarea>
                             <div className="NewPost-Buttons">
                                 <input id="PublicarButton" type="submit" value="Publicar"/>
+                            </div>
+                            <div className="NewPost-Buttons">
+                                <button id="ClearButton" onClick={handleReset} type="reset">Limpiar</button>
                             </div>
                         </form>
                     </div>
