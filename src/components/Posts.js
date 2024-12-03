@@ -81,7 +81,7 @@ function Posts(props) {
                 </div>
             )}
             <div className="border-t border-gray-300 w-full max-w-2xl pt-6">
-                <h5 className="text-lg font-semibold text-gray-700">Posts del Muro</h5>
+                <h5 className="text-lg font-semibold text-gray-200">Posts del Muro</h5>
             </div>
             <PostContainer isSent={isSent} />
         </div>
