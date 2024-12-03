@@ -24,7 +24,7 @@ function PostContainer(props) {
 
     return (
         <div className="PostList">
-            <PostCard data={posts}/>
+            <PostCard data={posts} user={props.user} onPostUpdate={fetchPost}/>
         </div>
     )
 }
