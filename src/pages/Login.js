@@ -35,6 +35,7 @@ function Login() {
                         Dirección de Correo Electronico
                     </label>
                     <input
+                        className="p-3 border border-gray-300 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
                         type="email"
                         id="email-address"
                         value={email}
@@ -47,6 +48,7 @@ function Login() {
                         Contraseña
                     </label>
                     <input
+                        className="p-3 border border-gray-300 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
                         type="password"
                         id="password"
                         value={password}
@@ -56,6 +58,7 @@ function Login() {
                     />                                            
                     
                     <input
+                        className="mt-4 px-6 py-2 bg-gray-300 text-black font-semibold rounded-lg hover:bg-gray-400 transition transform hover:scale-105"
                         type="submit" 
                         onClick={onLogin}
                         value="Iniciar Sesión"                        
