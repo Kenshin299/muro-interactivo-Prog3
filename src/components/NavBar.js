@@ -7,6 +7,7 @@ function NavBar(props) {
         signOut(auth).then(() => {
         // Sign-out successful.
             console.log("Signed out successfully")
+            window.location.reload(true);
         }).catch((error) => {
             console.log(error);
         });
