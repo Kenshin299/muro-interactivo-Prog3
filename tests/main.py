@@ -157,7 +157,7 @@ class TestRegistroLogin(unittest.TestCase):
             self.fail(f"Error inesperado: {e}")
 
     def test_elimiar_publicacion(self):
-        """TC004: Editar publicación"""
+        """TC005: Eliminar publicación"""
         driver = self.driver
         driver.get("http://localhost:3000/login")
         
@@ -198,6 +198,52 @@ class TestRegistroLogin(unittest.TestCase):
             # Capturar error en caso de que la eliminación falle
             self.take_screenshot('test_eliminar_publicacion_fallido')
             self.fail(f"Error inesperado: {e}")
+
+    def test_ver_publicaciones(self):
+        """TC006:Ver publicaciones de otros usuarios"""
+        driver = self.driver
+        driver.get("http://localhost:3000/")
+
+        self.take_screenshot('test_ver_publicaciones_antes')
+
+        time.sleep(2)
+        
+        try:
+            WebDriverWait(driver, 4).until(
+                EC.url_contains("/")
+            )
+            self.assertEqual(self.driver.current_url, "http://localhost:3000/")
+            self.assertEqual(self.driver.find_element(By.CLASS_NAME, "PostList").get_dom_attribute("class"), "PostList")
+            self.take_screenshot('test_ver_publicaciones_exitoso')
+        except UnexpectedAlertPresentException as e:
+            self.take_screenshot('test_ver_publicaciones_fallido')
+            self.fail(f"Unexpected alert: {e.alert_text}")
+        except Exception as e:
+            self.take_screenshot('test_ver_publicaciones_fallido')
+            raise e
+        
+    def test_cerrar_sesion(self):
+        """TC007:cerrar_sesion"""
+        driver = self.driver
+        driver.get("http://localhost:3000/")
+        time.sleep(2)
+        driver.find_element(By.ID, "SignOut").click()
+        self.take_screenshot('test_cerrar_sesion_antes')
+        
+        try:
+            WebDriverWait(driver, 4).until(
+                EC.url_contains("/")
+            )
+            self.assertEqual(self.driver.current_url, "http://localhost:3000/")
+            try:
+                self.assertNotEqual(driver.find_element(By.ID, "NewPostTitle"), "a")
+            except e:
+                self.take_screenshot('test_cerrar_sesion_exitoso')
+        except UnexpectedAlertPresentException as e:
+            self.take_screenshot('test_cerrar_sesion_fallido')
+            self.fail(f"Unexpected alert: {e.alert_text}")
+        except Exception as e:
+            self.take_screenshot('test_cerrar_sesion_fallido')
     
     @classmethod
     def tearDownClass(cls):
@@ -211,5 +257,8 @@ if __name__ == "__main__":
     suite.addTest(TestRegistroLogin('test_publicar_post_valido'))
     suite.addTest(TestRegistroLogin('test_editar_publicacion'))
     # suite.addTest(TestRegistroLogin('test_elimiar_publicacion'))
+    suite.addTest(TestRegistroLogin('test_cerrar_sesion'))
+    suite.addTest(TestRegistroLogin('test_ver_publicaciones'))
+    
     runner = HTMLTestRunner.HTMLTestRunner(log=True, output='report', title='Pruebas de Selenium', description='Reporte de pruebas de registro, login y publicación de posts')
     runner.run(suite)
