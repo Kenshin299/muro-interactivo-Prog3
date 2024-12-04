@@ -220,30 +220,28 @@ class TestRegistroLogin(unittest.TestCase):
             self.fail(f"Unexpected alert: {e.alert_text}")
         except Exception as e:
             self.take_screenshot('test_ver_publicaciones_fallido')
-            raise e
+            self.fail(f"Unexpected alert: {e}")
         
     def test_cerrar_sesion(self):
         """TC007:cerrar_sesion"""
         driver = self.driver
         driver.get("http://localhost:3000/")
         time.sleep(2)
-        driver.find_element(By.ID, "SignOut").click()
         self.take_screenshot('test_cerrar_sesion_antes')
-        
+        driver.find_element(By.ID, "SignOut").click()
         try:
+            time.sleep(2)
             WebDriverWait(driver, 4).until(
                 EC.url_contains("/")
             )
             self.assertEqual(self.driver.current_url, "http://localhost:3000/")
-            try:
-                self.assertNotEqual(driver.find_element(By.ID, "NewPostTitle"), "a")
-            except e:
-                self.take_screenshot('test_cerrar_sesion_exitoso')
+            self.take_screenshot('test_cerrar_sesion_exitoso')
         except UnexpectedAlertPresentException as e:
             self.take_screenshot('test_cerrar_sesion_fallido')
             self.fail(f"Unexpected alert: {e.alert_text}")
         except Exception as e:
             self.take_screenshot('test_cerrar_sesion_fallido')
+            self.fail(f"Unexpected alert: {e}")
     
     @classmethod
     def tearDownClass(cls):
